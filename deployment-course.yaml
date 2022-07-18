@@ -16,10 +16,6 @@ spec:
       containers:
       - name: nginx
         image: wesleywillians/nginx-ab
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "128Mi"
         ports:
         - containerPort: 80
 
@@ -43,10 +39,6 @@ spec:
       containers:
       - name: nginx
         image: wesleywillians/nginx-ab:b
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "128Mi"
         ports:
         - containerPort: 80
 
@@ -61,6 +53,6 @@ spec:
   selector:
     app: nginx
   ports:
-  - port: 8000
+  - port: 8001
     targetPort: 80
-    nodePort: 30000
+    nodePort: 30001
