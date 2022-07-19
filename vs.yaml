@@ -10,28 +10,28 @@ spec:
       - destination:
           host: nginx-service
           subset: v1
-        weight: 100
+        weight: 12
       - destination:
           host: nginx-service
           subset: v2
-        weight: 0
----
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: nginx-dr
-spec:
-  host: nginx-service
-  trafficPolicy:
-    loadBalancer:
-      simple: RANDOM
-  subsets:
-    - name: v1
-      labels:
-        version: A
-      trafficPolicy:
-        loadBalancer:
-          simple: LEAST_CONN
-    - name: v2
-      labels:
-        version: B
+        weight: 88
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: DestinationRule
+# metadata:
+#   name: nginx-dr
+# spec:
+#   host: nginx-service
+#   trafficPolicy:
+#     loadBalancer:
+#       simple: RANDOM
+#   subsets:
+#     - name: v1
+#       labels:
+#         version: A
+#       trafficPolicy:
+#         loadBalancer:
+#           simple: LEAST_CONN
+#     - name: v2
+#       labels:
+#         version: B
